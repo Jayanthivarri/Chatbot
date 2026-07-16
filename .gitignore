@@ -1,0 +1,22 @@
+# Virtual Environment
+venv/
+
+# Environment Variables
+.env
+
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# VS Code Settings
+.vscode/
+
+# Personal Memory
+memory.json
+
+# Personal Profile (Ignore if it contains your own details)
+profile.txt
+
+# Operating System Files
+.DS_Store
+Thumbs.db

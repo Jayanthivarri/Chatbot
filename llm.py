@@ -1,6 +1,8 @@
 from openai import OpenAI
 from dotenv import load_dotenv
+from prompt import SYSTEM_PROMPT
 import os
+import json
 
 load_dotenv()
 
@@ -18,25 +20,14 @@ def llm_call(query, messages):
 User: {chat['q']}
 Assistant: {chat['a']}
 """
-    profile = ""
+    profile = {}
 
-    if os.path.exists("profile.txt"):
-        with open("profile.txt", "r", encoding="utf-8") as file:
-            profile = file.read()
-
+    if os.path.exists("profile.json"):
+        with open("profile.json", "r", encoding="utf-8") as file:
+            profile = json.load(file)
     prompt = f"""
-You are a helpful AI assistant.
 
-Instructions:
-- Answer only in fluent English.
-- Use the previous conversation whenever it is relevant.
-- Remember facts shared by the user (such as name, skills, preferences, education, etc.).
-- If the user asks about previous conversations, answer from the conversation history.
-- Do not mix languages.
-- Do not repeat words.
-- Keep answers clear, concise, and natural.
-- Use bullet points only when listing items.
-
+{SYSTEM_PROMPT}
 
 User Profile:
 {profile}
@@ -45,10 +36,8 @@ Previous Conversation:
 {history}
 
 Current Question:
-
 {query}
 
-Answer naturally. If the current question refers to previous conversation, use the previous conversation.
 """
 
     response = client.chat.completions.create(

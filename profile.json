@@ -1,0 +1,31 @@
+{
+    "name": "Jayanthi",
+    "education": {
+        "degree": "B.Tech",
+        "branch": "Electrical and Electronics Engineering",
+        "college": "Aditya College of Engineering and Technology",
+        "graduation_year": 2025
+    },
+    "skills": [
+        "Python",
+        "SQL",
+        "Machine Learning",
+        "Deep Learning",
+        "Generative AI",
+        "FastAPI",
+        "Streamlit"
+    ],
+    "projects": [
+        "Loan Prediction",
+        "Customer Churn Prediction",
+        "Face Recognition Login System"
+    ],
+    "hobbies": [
+        "Playing Games",
+        "Listening to Music",
+        "Traveling"
+    ],
+    "preferences": {
+        "language": "English"
+    }
+}

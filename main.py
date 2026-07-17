@@ -1,31 +1,27 @@
 from llm import llm_call
-from memory import load_memory, save_memory
+from colorama import Fore, Style, init
 
-messages = load_memory()
-
-print("=" * 40)
-print("AI Chatbot")
-print("=" * 40)
+init(autoreset=True)
+messages = []
+print(Fore.CYAN + "=" * 40)
+print(Fore.GREEN + " AI Chatbot")
+print(Fore.CYAN + "=" * 40)
 
 while True:
-
-    user_input = input("\nYou : ")
+    user_input = input(Fore.YELLOW + "\nYou : " + Style.RESET_ALL)
 
     if user_input.lower() in ["stop", "exit", "quit"]:
-        print("\nBot : Goodbye!")
+        print(Fore.GREEN + "\nBot : " + Style.RESET_ALL + "Goodbye!")
         break
-
+    print(Fore.BLUE + "\nThinking...")
     response = llm_call(user_input, messages)
 
-    print("\nBot :", response)
+    print(Fore.GREEN + "\nBot : " + Style.RESET_ALL + response)
 
     messages.append({
         "q": user_input,
         "a": response
     })
-
-    # Save conversation to file
-    save_memory(messages)
 
    
     #print(messages)
